@@ -35,20 +35,6 @@ namespace MeshLoader
             }
         }
 
-        inFile >> mesh->ColorCount;
-
-        if (mesh->ColorCount > 0)
-        {
-            mesh->Colors = new Color[mesh->ColorCount];
-
-            for (int i = 0; i < mesh->ColorCount; i++)
-            {
-                inFile >> mesh->Colors[i].r;
-                inFile >> mesh->Colors[i].g;
-                inFile >> mesh->Colors[i].b;
-            }
-        }
-
        inFile >> mesh->TexCoordCount;
 
         if (mesh->TexCoordCount > 0)
@@ -59,6 +45,20 @@ namespace MeshLoader
             {
                 inFile >> mesh->TexCoords[i].u;
                 inFile >> mesh->TexCoords[i].v;
+            }
+        }
+
+        inFile >> mesh->NormalCount;
+
+        if (mesh->NormalCount > 0)
+        {
+            mesh->Normals = new Vector3[mesh->NormalCount];
+
+            for (int i = 0; i < mesh->NormalCount; i++)
+            {
+                inFile >> mesh->Normals[i].x;
+                inFile >> mesh->Normals[i].y;
+                inFile >> mesh->Normals[i].z;
             }
         }
 

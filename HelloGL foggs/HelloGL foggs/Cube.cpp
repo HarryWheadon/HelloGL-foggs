@@ -74,7 +74,7 @@ void Cube::Method()
 
 void Cube::Update()
 {
-
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
 	_rotation += (rand() % 2 + 1);
 }
 

@@ -31,7 +31,7 @@ public:
 private:
 	float rotation;
 	Camera* camera;
-	SceneObject* objects[1000];
+	SceneObject* objects[1001];
 	Vector4* _lightPosition;
 	Lighting* _lightData;
 

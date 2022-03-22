@@ -20,6 +20,9 @@ void HelloGL::InitObjects()
 	Texture2D* texture = new Texture2D();
 	texture->Load((char*)"penguins.raw", 512, 512);
 
+	Texture2D* textureStar = new Texture2D();
+	textureStar->Load((char*)"stars.raw", 512, 512);
+
 	camera = new Camera();
 
 	for (int i = 0; i < 1000; i++)
@@ -27,7 +30,8 @@ void HelloGL::InitObjects()
 		objects[i] = new Cube(cubeMesh,texture,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 250) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-
+		objects[1000] = new Cube(cubeMesh, textureStar, ((rand() % 400) / 10.0f) -20.0f, 30, -(rand() % 1000) / 10.0f);
+	
 	/*for (int i = 500; i < 1000; i++)
 	{
 		objects[i] = new Pyramid(pyramidMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
@@ -67,8 +71,7 @@ void HelloGL::InitGL(int argc, char* argv[])
 {
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
-	glutInitDisplayMode(GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Simple OpenGL Program");
@@ -81,7 +84,7 @@ void HelloGL::InitGL(int argc, char* argv[])
 	// Set the correct perspective.
 	gluPerspective(45, 1, 0, 1000);
 	glMatrixMode(GL_MODELVIEW);
-	/*glEnable(GL_DEPTH_TEST);*/
+	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_TEXTURE_2D);
@@ -92,7 +95,7 @@ void HelloGL::InitGL(int argc, char* argv[])
 void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 1001; i++)
 	{
 		objects[i]->Draw();
 	}
@@ -108,7 +111,7 @@ void HelloGL::Update()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, &(_lightData->Diffuse.x));
 	glLightfv(GL_LIGHT0, GL_SPECULAR, &(_lightData->Specular.x));
 	glLightfv(GL_LIGHT0, GL_POSITION, &(_lightPosition->x));
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 1001; i++)
 	{
 		objects[i]->Update();
 	}
@@ -125,6 +128,10 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 		camera->eye.z -= 1.0f;
 	if (key == 's')
 		camera->eye.z += 1.0f;
+	if (key == 't')
+		camera->eye.y += 1.0f;
+	if (key == 'g')
+		camera->eye.y -= 1.0f;
 }
 
 HelloGL::~HelloGL(void)

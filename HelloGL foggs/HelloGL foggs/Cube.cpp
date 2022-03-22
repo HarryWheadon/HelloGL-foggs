@@ -17,7 +17,7 @@ Cube::~Cube()
 
 void Cube::Draw()
 {
-	if (_mesh->Vertices != nullptr && _mesh->Colors != nullptr && _mesh->Indices != nullptr)
+	if (_mesh->Vertices != nullptr && _mesh->Colors != nullptr && _mesh->Indices != nullptr && _mesh->TexCoords != nullptr)
 	{ 
 
 		glBindTexture(GL_TEXTURE_2D, _texture->GetID());
@@ -36,8 +36,10 @@ void Cube::Draw()
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < 36; i++)
 	{
-		glColor3fv(&_mesh->Colors[_mesh->Indices[i]].r);
+		glTexCoord2f(_mesh->TexCoords[_mesh->Indices[i]].u, _mesh->TexCoords[_mesh->Indices[i]].v);
 		glVertex3fv(&_mesh->Vertices[_mesh->Indices[i]].x);
+		/*glColor3fv(&_mesh->Colors[_mesh->Indices[i]].r);
+		glVertex3fv(&_mesh->Vertices[_mesh->Indices[i]].x);*/
 	}
 	glEnd();
 	glPopMatrix();

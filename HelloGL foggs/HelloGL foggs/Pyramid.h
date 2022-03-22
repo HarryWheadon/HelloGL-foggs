@@ -7,7 +7,6 @@
 #include "SceneObject.h"
 #include "Cube.h"
 
-
 class Pyramid : public SceneObject
 {
 private:

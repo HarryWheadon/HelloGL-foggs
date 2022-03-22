@@ -39,7 +39,7 @@ struct Mesh
 {
 	Vertex* Vertices = nullptr;
 	Color* Colors = nullptr;
-	GLushort* Indices = nullptr;
 	TexCoord* TexCoords = nullptr;
+	GLushort* Indices = nullptr;
 	int VertexCount = 0, ColorCount = 0, IndexCount = 0, TexCoordCount = 0;
 };

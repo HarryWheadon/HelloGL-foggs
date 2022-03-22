@@ -17,7 +17,7 @@ void HelloGL::InitObjects()
 
 
 	Texture2D* texture = new Texture2D();
-	texture->Load((char*)"penguins.raw", 512, 12);
+	texture->Load((char*)"penguins.raw", 512, 512);
 
 	camera = new Camera();
 
@@ -44,7 +44,6 @@ void HelloGL::InitGL(int argc, char* argv[])
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitDisplayMode(GLUT_DEPTH);
-	glEnable(GL_DEPTH_TEST);
 	glutInitWindowSize(800, 800);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Simple OpenGL Program");
@@ -57,6 +56,7 @@ void HelloGL::InitGL(int argc, char* argv[])
 	// Set the correct perspective.
 	gluPerspective(45, 1, 0, 1000);
 	glMatrixMode(GL_MODELVIEW);
+	/*glEnable(GL_DEPTH_TEST);*/
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);

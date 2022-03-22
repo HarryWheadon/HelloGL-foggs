@@ -35,11 +35,33 @@ struct TexCoord
 	GLfloat v;
 };
 
+struct Vector4
+{
+	float x;
+	float y;
+	float z;
+	float w;
+};
+
+struct Lighting
+{
+	Vector4 Ambient;
+	Vector4 Diffuse;
+	Vector4 Specular;
+};
+
+struct Material
+{
+	Vector4 Ambient;
+	Vector4 Diffuse;
+	Vector4 Specular;
+	GLfloat Shininess;
+};
 struct Mesh
 {
 	Vertex* Vertices = nullptr;
-	Color* Colors = nullptr;
+	Vector3* Normals;
 	TexCoord* TexCoords = nullptr;
 	GLushort* Indices = nullptr;
-	int VertexCount = 0, ColorCount = 0, IndexCount = 0, TexCoordCount = 0;
+	int VertexCount = 0, NormalCount = 0, IndexCount = 0, TexCoordCount = 0;
 };

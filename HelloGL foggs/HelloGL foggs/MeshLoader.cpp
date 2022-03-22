@@ -49,7 +49,7 @@ namespace MeshLoader
             }
         }
 
-        inFile >> mesh->TexCoordCount;
+       inFile >> mesh->TexCoordCount;
 
         if (mesh->TexCoordCount > 0)
         {
@@ -73,6 +73,7 @@ namespace MeshLoader
                 inFile >> mesh->Indices[i];
             }
         }
+
 
         inFile.close();
 

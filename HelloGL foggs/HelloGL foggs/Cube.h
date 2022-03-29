@@ -22,5 +22,6 @@ public:
 	void Draw();
 	void Update();
 	void SetRotation(float rotation);
+	//Material* _material = new Material();
 };
 

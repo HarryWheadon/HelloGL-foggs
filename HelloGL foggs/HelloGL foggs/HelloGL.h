@@ -31,6 +31,8 @@ public:
 	
 	void InitLighting();
 
+	void DrawString(const char* text, Vector3* position, Color* color);
+
 private:
 	float rotation;
 	Camera* camera;

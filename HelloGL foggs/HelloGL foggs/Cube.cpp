@@ -44,12 +44,14 @@ void Cube::Draw()
 	glTranslatef(_position.x, _position.y, _position.z);
 	glRotatef(_rotation, 0.0f, 0.0f, -1.0f);
 	glBegin(GL_TRIANGLES);
+
 	for (int i = 0; i < 36; i++)
 	{
 		glTexCoord2f(_mesh->TexCoords[_mesh->Indices[i]].u, _mesh->TexCoords[_mesh->Indices[i]].v);
 		glVertex3fv(&_mesh->Vertices[_mesh->Indices[i]].x);
 		glNormal3f(_mesh->Normals[i].x, _mesh->Normals[i].y, _mesh->Normals[i].z);
 	}
+
 	glEnd();
 	glPopMatrix();
 	}

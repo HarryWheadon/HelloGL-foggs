@@ -1,5 +1,6 @@
 #include "HelloGL.h"
 #include "MeshLoader.h"
+#include <iostream>
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
@@ -67,13 +68,14 @@ void HelloGL::InitLighting()
 
 }
 
+
 void HelloGL::InitGL(int argc, char* argv[])
 {
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
-	glutInitWindowPosition(100, 100);
+	glutInitWindowPosition(500, 100);
 	glutCreateWindow("Simple OpenGL Program");
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
 	glutDisplayFunc(GLUTCallbacks::Display);
@@ -92,14 +94,32 @@ void HelloGL::InitGL(int argc, char* argv[])
 	glCullFace(GL_BACK);
 }
 
+void HelloGL::DrawString(const char* text, Vector3* position, Color* color)
+{
+	glPushMatrix();
+	glTranslatef(position->x, position->y, position->z);
+	glRasterPos2f(0.0f, 0.0f);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (unsigned char*)text);
+	//std::cout << position->x << " " << position->y << " " << position->z << std::endl;
+	glPopMatrix();
+}
+
 void HelloGL::Display()
 {
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
+
 	for (int i = 0; i < (OBJECTCOUNT+1); i++)
 	{
 		objects[i]->Draw();
 	}
+
+	Vector3 v = { -0.4f, 0.7f, -3.0f };
+	Color c = { 1.0f, 1.0f, 1.0f };
+	DrawString(" joe biden", &v, &c);
+
 	glFlush(); //flushes the scene drawn to the graphics card
+
 	glutSwapBuffers();
 }
 

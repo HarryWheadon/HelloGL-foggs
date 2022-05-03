@@ -33,7 +33,7 @@ namespace OBJLoader
         if (line[0] == 'v') {
             if (line[1] == ' ') {
                 sscanf(line.c_str(), "v %f %f %f", &x, &y, &z);
-             a >> mesh->Vertices.x;
+             x >> mesh->Vertices.x;
                 mesh->Vertices[].y;
                 mesh->Vertices[].z;
             }

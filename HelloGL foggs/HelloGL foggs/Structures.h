@@ -65,10 +65,14 @@ struct Mesh
 	GLushort* Indices = nullptr;
 	int VertexCount = 0, NormalCount = 0, IndexCount = 0, TexCoordCount = 0;
 };
+struct Faces
+{
+
+};
 struct OBJMesh
 {
 	vector<Vertex*>Vertices;
 	vector<Vector3*> Normals;
 	vector<TexCoord*> TexCoords;
-
+	vector<Faces*>Faces;
 };

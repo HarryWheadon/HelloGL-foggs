@@ -10,11 +10,6 @@ using namespace std;
 
 class OBJLoader
 {
-public:
-	int line;
-	int lines[];
-
-private:
 
 };
 

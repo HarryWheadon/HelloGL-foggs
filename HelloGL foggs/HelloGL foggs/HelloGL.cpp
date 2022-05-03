@@ -116,7 +116,7 @@ void HelloGL::Display()
 
 	Vector3 v = { -0.4f, 0.7f, -3.0f };
 	Color c = { 1.0f, 1.0f, 1.0f };
-	DrawString(" joe biden", &v, &c);
+	/*DrawString(" joe biden", &v, &c);*/
 
 	glFlush(); //flushes the scene drawn to the graphics card
 

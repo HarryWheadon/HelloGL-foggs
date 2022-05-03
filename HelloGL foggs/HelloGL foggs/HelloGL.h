@@ -1,6 +1,6 @@
 #pragma once
 #define REFRESHRATE 16
-#define OBJECTCOUNT 1000
+#define OBJECTCOUNT 500
 #include <Windows.h> // required for OpenGl on windows
 #include <gl/GL.h> //OpenGl
 #include <gl/GLU.h> //OpenGl utilities

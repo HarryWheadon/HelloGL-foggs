@@ -67,8 +67,8 @@ struct Mesh
 };
 struct OBJMesh
 {
-	Vertex* Vertices = nullptr;
-	Vector3* Normals;
-	TexCoord* TexCoords = nullptr;
+	vector<Vertex*>Vertices;
+	vector<Vector3*> Normals;
+	vector<TexCoord*> TexCoords;
 
 };

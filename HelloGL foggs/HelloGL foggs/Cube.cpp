@@ -25,7 +25,7 @@ void Cube::Draw()
 		glTexCoordPointer(2, GL_FLOAT, 0, _mesh->TexCoords);
 
 		glEnable(GL_NORMAL_ARRAY);
-		glNormalPointer(GL_FLOAT, 0, _mesh->Normals);
+		glNormalPointer(GL_FLOAT, 0, _mesh->Indices);
 
 		Method();
 
@@ -43,6 +43,8 @@ void Cube::Draw()
 
 	glTranslatef(_position.x, _position.y, _position.z);
 	glRotatef(_rotation, 0.0f, 0.0f, -1.0f);
+	glBegin(GL_TRIANGLES);
+
 	glBegin(GL_TRIANGLES);
 
 	for (int i = 0; i < 36; i++)

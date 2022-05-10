@@ -6,10 +6,9 @@
 #include "Structures.h"
 #include <string>
 #include <vector>
-using namespace std;
 
-class OBJLoader
+namespace OBJLoader
 {
-
+	OBJ* Load(char* path);
 };
 

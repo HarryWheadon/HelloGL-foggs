@@ -1,6 +1,7 @@
 #include "HelloGL.h"
 #include "MeshLoader.h"
 #include <iostream>
+#include "OBJLoader.h"
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
@@ -16,7 +17,7 @@ void HelloGL::InitObjects()
 	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
 	//Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
 
-
+	/*OBJ* OBJMesh = OBJLoader::Load((char*)"droids_obj.obj");*/
 
 	Texture2D* texture = new Texture2D();
 	texture->Load((char*)"penguins.raw", 512, 512);
@@ -26,12 +27,12 @@ void HelloGL::InitObjects()
 
 	camera = new Camera();
 
-	for (int i = 0; i < OBJECTCOUNT; i++)
+	for (int i = 0; i < (OBJECTCOUNT); i++)
 	{
 		objects[i] = new Cube(cubeMesh,texture,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 250) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-		objects[OBJECTCOUNT] = new Cube(cubeMesh, textureStar, ((rand() % 400) / 10.0f) -20.0f, 30, -(rand() % 1000) / 10.0f);
+		/*objects[OBJECTCOUNT] = new Cube(cubeMesh, textureStar, ((rand() % 400) / 10.0f) -20.0f, 30, -(rand() % 1000) / 10.0f);*/
 	
 	/*for (int i = 500; i < 1000; i++)
 	{
@@ -109,7 +110,7 @@ void HelloGL::Display()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
 
-	for (int i = 0; i < (OBJECTCOUNT+1); i++)
+	for (int i = 0; i < (OBJECTCOUNT); i++)
 	{
 		objects[i]->Draw();
 	}
@@ -131,7 +132,7 @@ void HelloGL::Update()
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, &(_lightData->Diffuse.x));
 	glLightfv(GL_LIGHT0, GL_SPECULAR, &(_lightData->Specular.x));
 	glLightfv(GL_LIGHT0, GL_POSITION, &(_lightPosition->x));
-	for (int i = 0; i < (OBJECTCOUNT+1); i++)
+	for (int i = 0; i < (OBJECTCOUNT); i++)
 	{
 		objects[i]->Update();
 	}

@@ -1,8 +1,9 @@
 #include "SceneObject.h"
 
-SceneObject::SceneObject(Mesh* mesh, Texture2D* texture)
+SceneObject::SceneObject(Mesh* mesh, OBJ* obj, Texture2D* texture)
 {
 	_mesh = mesh;
+	_obj = obj;
 }
 
 SceneObject::~SceneObject()

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh, nullptr)
+Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh,nullptr, nullptr)
 {
 	_position.x = x;
 	_position.y = y; 
@@ -43,7 +43,6 @@ void Cube::Draw()
 
 	glTranslatef(_position.x, _position.y, _position.z);
 	glRotatef(_rotation, 0.0f, 0.0f, -1.0f);
-	glBegin(GL_TRIANGLES);
 
 	glBegin(GL_TRIANGLES);
 
@@ -75,10 +74,6 @@ void Cube::Update()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
 	_rotation += (rand() % 2 + 1);
-	//aa++;
-	//std::cout << aa << std::endl;
-	//std::cout << cos(aa) << std::endl;
-	//_rotation += (float)cos(pow(aa, atan(1)*4));
 }
 
 void Cube::SetRotation(float rotation)

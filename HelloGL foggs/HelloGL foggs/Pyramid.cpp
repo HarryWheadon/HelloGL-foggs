@@ -3,7 +3,7 @@
 #include <fstream>
 using namespace std;
 
-Pyramid::Pyramid(Mesh* mesh, float x, float y, float z) : SceneObject(mesh, nullptr)
+Pyramid::Pyramid(Mesh* mesh, float x, float y, float z) : SceneObject(mesh,nullptr, nullptr)
 {
 	_position.x = x;
 	_position.y = y;

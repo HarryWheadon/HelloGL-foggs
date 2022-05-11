@@ -66,26 +66,10 @@ struct Mesh
 	GLushort* Indices = nullptr;
 	int VertexCount = 0, NormalCount = 0, IndexCount = 0, TexCoordCount = 0;
 };
-<<<<<<< Updated upstream
-struct Faces
-{
 
-};
-struct OBJMesh
-{
-	vector<Vertex*>Vertices;
-	vector<Vector3*> Normals;
-	vector<TexCoord*> TexCoords;
-	vector<Faces*>Faces;
-=======
 struct OBJ
 {
 	std::vector<Vertex> vertices;
 	std::vector<Vector3> normals;
 	std::vector<TexCoord> texCoord;
-
-	std::vector<GLushort*> vertexIndices;
-	std::vector<GLushort*> texIndices;
-	std::vector<GLushort*> normalIndices;
->>>>>>> Stashed changes
 };

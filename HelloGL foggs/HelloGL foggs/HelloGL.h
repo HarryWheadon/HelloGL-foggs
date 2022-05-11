@@ -9,6 +9,7 @@
 #include "Structures.h"
 #include "Cube.h"
 #include "Pyramid.h"
+#include "OBJect.h"
 
 class HelloGL
 {

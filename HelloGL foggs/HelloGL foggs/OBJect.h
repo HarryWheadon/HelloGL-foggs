@@ -5,9 +5,9 @@
 #include "GL\freeglut.h"
 #include "Structures.h"
 #include "SceneObject.h"
-#include "Pyramid.h"
+#include "Cube.h"
 
-class Cube : public SceneObject 
+class OBJect : public SceneObject
 {
 private:
 	GLfloat _rotation;
@@ -15,12 +15,11 @@ private:
 	Material* _material;
 
 public:
-	Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z);
-	~Cube();
+	OBJect(OBJ* obj, Texture2D* texture, float x, float y, float z);
+	~OBJect();
 
 	void Method();
 	void Draw();
 	void Update();
 	void SetRotation(float rotation);
 };
-

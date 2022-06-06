@@ -9,6 +9,7 @@
 #include "Structures.h"
 #include "Cube.h"
 #include "Pyramid.h"
+#include "OBJect.h"
 
 class HelloGL
 {
@@ -37,6 +38,7 @@ private:
 	float rotation;
 	Camera* camera;
 	SceneObject* objects[OBJECTCOUNT];
+	SceneObject* Football;
 	Vector4* _lightPosition;
 	Lighting* _lightData;
 

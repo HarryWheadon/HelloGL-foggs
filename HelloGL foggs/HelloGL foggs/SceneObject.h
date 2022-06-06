@@ -6,12 +6,13 @@ class SceneObject
 {
 protected:
 	Mesh* _mesh;
+	OBJ* _obj;
 	Texture2D* _texture;
 
 public:
-	SceneObject(Mesh* mesh, Texture2D* texture);
+	SceneObject(Mesh* mesh,OBJ* obj, Texture2D* texture);
 	virtual ~SceneObject();
-
+	
 	virtual void Update();
 	virtual void Draw();
 

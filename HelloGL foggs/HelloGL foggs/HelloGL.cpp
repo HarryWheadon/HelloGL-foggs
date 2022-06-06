@@ -27,12 +27,12 @@ void HelloGL::InitObjects()
 	camera = new Camera();
 
 
-	for (int i = 0; i < (OBJECTCOUNT - 1); i++)
+	for (int i = 0; i < (OBJECTCOUNT); i++)
 	{
 		objects[i] = new Cube(cubeMesh,texture,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 250) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-	objects[499] = new OBJect(OBJMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, 100, -(rand() % 1000) / 10.0f);
+	Football = new OBJect(OBJMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, 50, -(rand() % 1000) / 10.0f);
 
 	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 1.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
@@ -96,7 +96,6 @@ void HelloGL::DrawString(const char* text, Vector3* position, Color* color)
 	glTranslatef(position->x, position->y, position->z);
 	glRasterPos2f(0.0f, 0.0f);
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (unsigned char*)text);
-	//std::cout << position->x << " " << position->y << " " << position->z << std::endl;
 	glPopMatrix();
 }
 
@@ -110,9 +109,13 @@ void HelloGL::Display()
 		objects[i]->Draw();
 	}
 
-	Vector3 v = { -0.4f, 0.7f, -3.0f };
-	Color c = { 1.0f, 1.0f, 1.0f };
-	DrawString("move around: W,A,S,D", &v, &c);
+	Football->Draw();
+
+	Vector3 pos = { -0.4f, 0.7f, -3.0f };
+	Color colour = { 0.0f, 1.0f, 0.0f };
+
+	DrawString("Movement Controls: W,A,S,D", &pos, &colour);
+
 
 	glFlush(); //flushes the scene drawn to the graphics card
 
@@ -148,10 +151,9 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 		camera->center.y += 1.0f;
 	if (key == 'g')
 		camera->center.y -= 1.0f;
-	if (key == 'f')
-		camera->center.x += 1.0f;
-	if (key == 'h')
-		camera->center.x -= 1.0f;
+	if (key == 'r')
+		Football->Update();
+
 }
 
 HelloGL::~HelloGL(void)

@@ -17,46 +17,47 @@ namespace OBJLoader
         FILE* file;
         fopen_s(&file, path, "r");
 
-        if (file == NULL) {
-            printf("Impossible to open the file !\n");
-        }
-
         if(file != NULL){
 
         while (1) {
             char lineHeader[128];
             // read the first word of the line
             int res = fscanf_s(file, "%s", lineHeader, 100);
+
             if (res == EOF)
-                break; // EOF = End Of File. Quit the loop.
+                break; // loops until the end of the file
+
             // else : parse lineHeader
             else if (strcmp(lineHeader, "v") == 0) {
                 Vertex vertex;
                 fscanf_s(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
                 temp_vertices.push_back(vertex);
-                cout << "v" << "  " << vertex.x << " " << vertex.y << " " << vertex.z;
-                cout << endl;
+               /* cout << "v" << "  " << vertex.x << " " << vertex.y << " " << vertex.z;
+                cout << endl;*/
             }
+
             else if (strcmp(lineHeader, "vt") == 0) {
                 TexCoord uv;
                 fscanf_s(file, "%f %f\n", &uv.u, &uv.v);
                 temp_texCoord.push_back(uv);
-                cout << "vt" << "  " << uv.u << " " << uv.v;
-                cout << endl;
+                /*cout << "vt" << "  " << uv.u << " " << uv.v;
+                cout << endl;*/
             }
+
             else if (strcmp(lineHeader, "vn") == 0) {
                 Vector3 normal;
                 fscanf_s(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
                 temp_normals.push_back(normal);
-                cout << "vn" << "  " << normal.x << " " << normal.y << " " << normal.z;
-                cout << endl;
+                /*cout << "vn" << "  " << normal.x << " " << normal.y << " " << normal.z;
+                cout << endl;*/
             }
+
             else if (strcmp(lineHeader, "f") == 0) {
                 string vertex1, vertex2, vertex3;
                 unsigned int  vertexIndex[4], texIndex[4], normalIndex[4];
                 fscanf_s(file, "%d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d\n", &vertexIndex[0], &texIndex[0], &normalIndex[0], &vertexIndex[1], &texIndex[1], &normalIndex[1], &vertexIndex[2], &texIndex[2], &normalIndex[2], &vertexIndex[3], &texIndex[3], &normalIndex[3]);
-                cout << "f" << "  " << vertexIndex[0] << " / " << texIndex[1] << " / " << normalIndex[0] << "  " << vertexIndex[1] << " / " << texIndex[1] << " / " << normalIndex[1] << "  " << vertexIndex[2] << " / " << texIndex[2] << " / " << normalIndex[2] << "  " << vertexIndex[3] << " / " << texIndex[3] << " / " << normalIndex[3];
-                cout << endl;
+               /* cout << "f" << "  " << vertexIndex[0] << " / " << texIndex[1] << " / " << normalIndex[0] << "  " << vertexIndex[1] << " / " << texIndex[1] << " / " << normalIndex[1] << "  " << vertexIndex[2] << " / " << texIndex[2] << " / " << normalIndex[2] << "  " << vertexIndex[3] << " / " << texIndex[3] << " / " << normalIndex[3];
+                cout << endl;*/
                 vertexIndices.push_back(vertexIndex[0]);
                 vertexIndices.push_back(vertexIndex[1]);
                 vertexIndices.push_back(vertexIndex[2]);
@@ -89,7 +90,6 @@ namespace OBJLoader
            Vector3 normal = temp_normals[normalIndex - 1];
            OBJMesh->normals.push_back(normal);
         }
-        
         return OBJMesh;
 
     }

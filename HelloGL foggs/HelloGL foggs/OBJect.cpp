@@ -45,11 +45,6 @@ void OBJect::Draw()
 
 		glPushMatrix();
 
-		if (_position.z < 0.0f)
-			_position.z += 0.1f;
-		else
-			_position.z = -100;
-
 		glTranslatef(_position.x, _position.y, _position.z);
 		glRotatef(_rotation, 0.0f, 0.0f, -1.0f);
 
@@ -65,6 +60,7 @@ void OBJect::Draw()
 
 void OBJect::Update()
 {
+	_rotation += (rand() % 2 + 1);
 }
 
 void OBJect::SetRotation(float rotation)

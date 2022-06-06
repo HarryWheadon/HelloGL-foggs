@@ -38,6 +38,7 @@ private:
 	float rotation;
 	Camera* camera;
 	SceneObject* objects[OBJECTCOUNT];
+	SceneObject* Football;
 	Vector4* _lightPosition;
 	Lighting* _lightData;
 
